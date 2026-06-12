@@ -2290,6 +2290,267 @@ body.admin-active #content .admin-last-click::after {
         용역과제 전체 Step 中 과제책임자가 팀장 이상인 경우, 과제책임자 = 전결자
       </div>
 </div>
+<div id="sp-vat" data-init="vat" data-title="면세 vs 과세 과제 개념 안내 | KTR ERP 가이드">
+<h1>면세 vs 과세 과제 개념 안내 <small style="font-size:.5em;font-weight:400;color:var(--text-2)">(비영리 면세사업자 기준)</small></h1>
+
+<div class="callout">
+  <div class="callout-label">📌 이 페이지는?</div>
+  KTR은 <strong>비영리 면세사업자</strong>로, 부가세를 징수할 수도 없고 납부한 부가세를 환급받을 수도 없습니다.
+  이 페이지는 면세과제·과세과제의 차이와 그에 따른 계약·집행·정산 처리 방법을 안내합니다.
+</div>
+
+<h2>🔑 핵심 개념 먼저 이해하기</h2>
+
+<table>
+  <thead>
+    <tr><th style="width:28%">구분</th><th>내용</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>매입세액 공제 불가</strong></td>
+      <td>물품 구매 시 납부한 부가세 10%는 환급받지 못하고 비용으로 처리됩니다.</td>
+    </tr>
+    <tr>
+      <td><strong>계산서 발행</strong></td>
+      <td>면세 거래는 부가세 없이 계산서(일반)만 발행합니다.</td>
+    </tr>
+    <tr>
+      <td><strong>예산에 부가세 포함</strong></td>
+      <td>구매 예산 계획 시 부가세 10%까지 미리 포함하여 계획해야 합니다.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>📊 한눈에 비교</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th style="width:20%">구분</th>
+      <th style="background:#0e6b6b;text-align:center">📋 면세과제</th>
+      <th style="text-align:center">🏢 과세과제</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="font-weight:700;background:#f2f4f9;text-align:center">과제 성격</td>
+      <td style="color:#0e6b6b;font-weight:600;text-align:center">국가 R&amp;D, 학술연구 등<br>공익 목적</td>
+      <td style="color:var(--navy);font-weight:600;text-align:center">기업 위탁, 용역 등<br>수익 목적</td>
+    </tr>
+    <tr>
+      <td style="font-weight:700;background:#f2f4f9;text-align:center">계약 부가세</td>
+      <td style="color:#0e6b6b;font-weight:600;text-align:center">계약금액에 부가세 없음</td>
+      <td style="color:var(--navy);font-weight:600;text-align:center">계약금액 + 부가세 10%</td>
+    </tr>
+    <tr>
+      <td style="font-weight:700;background:#f2f4f9;text-align:center">세금계산서</td>
+      <td style="color:#0e6b6b;font-weight:600;text-align:center">계산서 발행<br>(부가세 = 0원)</td>
+      <td style="color:var(--navy);font-weight:600;text-align:center">세금계산서 발행<br>(부가세 포함)</td>
+    </tr>
+    <tr>
+      <td style="font-weight:700;background:#f2f4f9;text-align:center">물품 구매 시</td>
+      <td style="color:#0e6b6b;font-weight:600;text-align:center">부가세 → 비용 처리<br>(환급 불가)</td>
+      <td style="color:var(--navy);font-weight:600;text-align:center">부가세 → 비용 처리<br>(환급 불가, 동일)</td>
+    </tr>
+    <tr>
+      <td style="font-weight:700;background:#f2f4f9;text-align:center">부가세 신고</td>
+      <td style="color:#0e6b6b;font-weight:600;text-align:center">신고 의무 없음</td>
+      <td style="color:var(--navy);font-weight:600;text-align:center">연 2회 신고 의무</td>
+    </tr>
+    <tr>
+      <td style="font-weight:700;background:#f2f4f9;text-align:center">정산 방식</td>
+      <td style="color:#0e6b6b;font-weight:600;text-align:center">증빙 기반 실비 정산<br>(불용액 반납)</td>
+      <td style="color:var(--navy);font-weight:600;text-align:center">증빙 기반 실비 정산<br>(잔액 반납)</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr>
+
+<h2>📋 면세과제 : 계약 → 집행 → 정산</h2>
+
+<div class="callout callout-tip">
+  <div class="callout-label">📝 예시: 정부 R&amp;D 과제 1,000만원</div>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th style="width:12%;text-align:center">단계</th>
+      <th style="background:#0e6b6b;width:20%;text-align:center">항목</th>
+      <th>내용</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:center;font-weight:800;font-size:1.1em;color:var(--navy)">01</td>
+      <td style="font-weight:700;color:#0e6b6b;text-align:center">계약 체결</td>
+      <td>
+        <ul>
+          <li>협약금액 그대로 수령 (부가세 없음)</li>
+          <li>세금계산서 ❌ → 계산서 발행 ✅</li>
+          <li>예: 1,000만원 협약 → 1,000만원 수령</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:center;font-weight:800;font-size:1.1em;color:var(--navy)">02</td>
+      <td style="font-weight:700;text-align:center">예산 집행</td>
+      <td>
+        <ul>
+          <li>물품 구매 시 부가세(10%)는 비용 처리</li>
+          <li>환급 불가 → 예산에 부가세 포함 계획 필수</li>
+          <li>예: 100만원 물품 = 90.9만원 + 부가세 9.1만원</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:center;font-weight:800;font-size:1.1em;color:var(--navy)">03</td>
+      <td style="font-weight:700;color:#16a34a;text-align:center">정산 완료</td>
+      <td>
+        <ul>
+          <li>증빙서류 제출 (영수증, 세금계산서 등)</li>
+          <li>집행 잔액은 반납</li>
+          <li>별도 부가세 신고 의무 없음</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="callout callout-tip">
+  <div class="callout-label">💡 면세과제 포인트</div>
+  면세과제는 부가세 관련 신고 부담이 없고, 모든 거래는 계산서(일반)로 처리합니다.
+</div>
+
+<h2>🏢 과세과제 : 계약 → 집행 → 정산</h2>
+
+<div class="callout callout-tip">
+  <div class="callout-label">📝 예시: 기업 위탁 용역 1,000만원 (VAT 별도)</div>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th style="width:12%;text-align:center">단계</th>
+      <th style="width:20%;text-align:center">항목</th>
+      <th>내용</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:center;font-weight:800;font-size:1.1em;color:var(--navy)">01</td>
+      <td style="font-weight:700;color:#0e6b6b;text-align:center">계약 체결</td>
+      <td>
+        <ul>
+          <li>계약금액 = 1,000만원 + 부가세 100만원</li>
+          <li>위탁기관에서 1,100만원 수령</li>
+          <li>세금계산서 발행 ✅</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:center;font-weight:800;font-size:1.1em;color:var(--navy)">02</td>
+      <td style="font-weight:700;text-align:center">예산 집행</td>
+      <td>
+        <ul>
+          <li>물품 구매 시 부가세 → 비용 처리</li>
+          <li>면세사업자이므로 환급 불가</li>
+          <li>인건비·재료비 등 일반 비용 처리</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:center;font-weight:800;font-size:1.1em;color:var(--navy)">03</td>
+      <td style="font-weight:700;color:#d97706;text-align:center">정산 + 부가세 신고</td>
+      <td>
+        <ul>
+          <li>증빙서류 제출 → 잔액 반납</li>
+          <li>수령한 부가세 100만원은 국세청에 납부 (연 2회 신고)</li>
+          <li>⚠️ 신고 기한 반드시 준수!</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="callout callout-warn">
+  <div class="callout-label">⚠️ 과세과제 주의</div>
+  과세과제에서 수령한 부가세는 반드시 국세청에 납부해야 합니다. 미신고 시 가산세가 발생합니다.
+</div>
+
+<hr>
+
+<h2 class="">📄 세금계산서 vs 계산서&nbsp;</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th style="background:#0e6b6b;text-align:center">계산서 (일반) — 면세과제 수행 후</th>
+      <th style="text-align:center">세금계산서 — 과세과제 수행 후</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="color:#0e6b6b">✔ 공급가액만 기재 (부가세 없음)</td>
+      <td style="color:var(--navy)">✔ 공급가액 + 부가세 10% 별도 기재</td>
+    </tr>
+    <tr>
+      <td style="color:#0e6b6b">✔ 부가세 란에 0원 또는 공란</td>
+      <td style="color:var(--navy)">✔ 부가세 포함 총액으로 발행</td>
+    </tr>
+    <tr>
+      <td style="color:#0e6b6b">✔ 비영리기관의 일반적 발행 방식</td>
+      <td style="color:var(--navy)">✔ 발행 후 부가세 신고·납부 의무</td>
+    </tr>
+    <tr>
+      <td style="color:#0e6b6b">✔ 예: 용역 1,000만원 → 1,000만원 계산서</td>
+      <td style="color:var(--navy)">✔ 예: 1,000만원 → 부가세 100만원, 총 1,100만원 세금계산서</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="callout callout-danger">
+  <div class="callout-label">🚫 혼동 시 가산세 위험</div>
+  면세과제에 세금계산서 발행, 과세과제에 계산서 발행 시 세금 가산세가 부과될 수 있습니다. 반드시 과제 유형을 확인한 후 발행하세요.
+</div>
+
+<hr>
+
+<h2>✅ 실무 주의사항 &amp; 체크리스트</h2>
+
+<ul class="checklist">
+  <li><strong>부가세 예산 포함</strong> — 구매 예산 계획 시 물품가 × 1.1 기준으로 계획하세요. 부가세는 환급 불가능한 비용입니다.</li>
+  <li><strong>계산서 구분 발행</strong> — 면세과제 → 계산서 / 과세과제 → 세금계산서. 혼동 시 가산세가 발생할 수 있습니다.</li>
+  <li><strong>부가세 신고 기한 준수</strong> — 과세과제 보유 시 1기(1~6월 → 7월 신고), 2기(7~12월 → 다음 해 1월 신고).<span style="font-size: 0.92em;"><br></span></li>
+</ul>
+
+<hr>
+
+<h2>📌 핵심 요약</h2>
+
+<table>
+  <thead>
+    <tr><th style="width:20%">구분</th><th>요약</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>📋 면세과제</strong></td><td>부가세 없음 · 계산서 발행 · 별도 신고 없음</td></tr>
+    <tr><td><strong>🏢 과세과제</strong></td><td>부가세 별도 수령 · 세금계산서 발행 · 부가세 신고 납부</td></tr>
+    <tr><td><strong>💰 공통 주의</strong></td><td>매입 부가세 환급 불가 → 예산에 부가세 10% 포함 필수</td></tr>
+    <tr><td><strong>📝 서류 구분</strong></td><td>면세 → 계산서 / 과세 → 세금계산서 (혼동 금지!)</td></tr>
+  </tbody>
+</table>
+
+<div class="callout callout-warn">
+  <div class="callout-label">⚠️ 최종 확인</div>
+  담당 회계사 또는 전담기관 담당자에게 필히 확인 후 진행하세요.
+</div>
+
+<div class="callout" style="border-color:#7c3aed;background:#f5f3ff;margin-top:12px">
+  <div class="callout-label" style="color:#6d28d9">📞 부가세 미환원 확인서 및 증빙서류 문의</div>
+  부가세 미환원 확인서 발급 및 관련 증빙서류 준비에 관한 사항은 <strong>R&amp;D기획실</strong>로 문의하시기 바랍니다.
+</div>
+</div>
 <div id="sp-관리자가이드" data-init="step-09" data-title="관리자 가이드 | KTR ERP 가이드">
 <h1>🛠️ 관리자 가이드</h1>
       <p style="color:var(--text-2)">대상: R&D기획실 담당자 (콘텐츠 추가·수정 담당)<br>
@@ -2450,9 +2711,9 @@ body.admin-active #content .admin-last-click::after {
       관리자가 디스크에 저장하지 않은 미저장 편집도 함께 사라지므로,
       편집 워크플로우는 반드시 [💾 저장] → py build-bundle.py 순서로. -->
 <script>
-var BUILD_VER = '260605';
+var BUILD_VER = '260612';
 (function () {
-  var BUILD_ID = '260605 132901';
+  var BUILD_ID = '260612 132205';
   try {
     var lastSeen = localStorage.getItem('ktr-build-id');
     if (lastSeen !== BUILD_ID) {
@@ -2504,6 +2765,7 @@ const NAV = [
   { type: 'link', label: '📋 케이스 모음',   href: 'cases.html',   id: 'cases' },
   { type: 'link', label: '👤 위촉연구원 채용 가이드', href: 'wichok.html', id: 'wichok' },
   { type: 'link', label: '🗺️ 한 눈에 보는 용역과제 등록 절차', href: 'yongyeok.html', id: 'yongyeok' },
+  { type: 'link', label: '💡 면세 vs 과세 과제 개념 안내', href: 'vat.html', id: 'vat' },
 ];
 
 /* ── 검색 인덱스 ─────────────────────────────────────────
@@ -3111,6 +3373,13 @@ const SEARCH_INDEX = [
     id: 'wichok', href: 'wichok.html', title: '위촉연구원 채용 가이드',
     tags: ['위촉연구원','채용','채용기준','과제금액','기여분','급여','박사급','석사급','학사급','계약기간','내부결재','협조전','채용공고','계약해지','4대보험','사전협의','인사실','R&D기획실','사유서','월급여','비밀유지서약서','연장계약','본부장','단장'],
     excerpt: '위촉연구원 채용 기준(과제금액 1.5억 이상·기여분 30% 이상), 급여 상한(박사 별도협의·석사 320만·학사 260만), 채용 절차(내부결재→채용공고→협조전+비밀유지서약서), 연장계약 시 절차 반복, 계약관리(합산 2년 이내) 안내.'
+  },
+
+  /* ══ 면세 vs 과세 과제 개념 안내 ═══════════════════════ */
+  {
+    id: 'vat', href: 'vat.html', title: '면세 vs 과세 과제 개념 안내',
+    tags: ['면세','과세','부가세','VAT','세금계산서','계산서','매입세액','환급','면세과제','과세과제','비영리','면세사업자','부가세신고','안분','겸업','부가세환급불가','계산서발행','부가세예산','미환원','미환원확인서'],
+    excerpt: '비영리 면세사업자(KTR) 기준. 면세과제는 부가세 없이 계산서 발행·신고 의무 없음. 과세과제는 부가세 별도 수령·세금계산서 발행·연 2회 신고 납부 의무. 매입 부가세는 양쪽 모두 환급 불가.'
   },
 ];
 
