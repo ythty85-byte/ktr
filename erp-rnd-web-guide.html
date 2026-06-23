@@ -1167,10 +1167,10 @@ body.admin-active #content .admin-last-click::after {
 
       <hr>
       <h2 id="비목별-예산입력">비목별 예산 입력 방법</h2>
-      <table>
+      <table class="">
         <thead><tr><th>비목</th><th>입력 방법</th><th>비고</th></tr></thead>
         <tbody>
-          <tr><td>인건비</td><td>참여연구원별 연간 인건비 계상액 입력</td><td>참여금액 = 인건비 계상액</td></tr>
+          <tr><td>인건비</td><td>참여연구원별 연간 인건비 계상액 입력<br></td><td>참여금액 = 인건비 계상액<br>110101 내부인건비 - 기여분 O<br>110301 연구수당(식약처용역) - 기여분 O<br>110201 외부인건비 - 기여분 X<br>110202 외부인건비(위촉) - 기여분 X</td></tr>
           <tr><td>직접비</td><td>재료비·여비·전문가활용비 등 세부 비목별로 입력</td><td>협약서 내역과 일치</td></tr>
           <tr><td>연구수당</td><td>별도 항목으로 입력: 직접비-직접비(연구수당)</td><td>—</td></tr>
           <tr><td>간접비</td><td>예산코드 <strong>130101 (간접경비)</strong> 사용</td><td>다른 코드로 등록 시 이중지출 가능</td></tr>
@@ -1281,7 +1281,7 @@ body.admin-active #content .admin-last-click::after {
 
       <hr>
       <h2 id="연구수당">연구수당</h2>
-      <div class="menu-path">회계관리 &gt; 지출요구관리 &gt; 지출요구입력 &gt; <strong>연구수당(과제)</strong> 버튼 클릭</div>
+      <div class="menu-path">회계관리 &gt; 지출요구관리 &gt; 지출요구입력 &gt; <strong>연구수당(과제)</strong> 버튼 클릭<br><br>준비서류 : *연구수당 기여도 평가표, *연구수당 지급 신청서, *연구수당 미지급 사유서(필요시)<br>* 연구수당운영지침 별지1~3호 서식</div>
 
       <div class="callout">
         <div class="callout-label">📌 연구수당 집행 시기</div>
@@ -1294,8 +1294,7 @@ body.admin-active #content .admin-last-click::after {
 
       <div class="callout callout-tip">
         <div class="callout-label">💡 전액 지급 조건 (국가연구개발혁신법)</div>
-        연구수당 집행 시 <strong>직접비의 80% 이상이 소진</strong>되어야 연구수당을 전액 지급할 수 있습니다.
-      </div><div class="callout callout-warn"><div class="callout-label">⚠️ 주의 : 연구수당 집행 기준 (국가연구개발혁신법)</div><ul><li>수정인건비의 20%를 초과하여 집행할 수 없습니다.</li><li>특정 참여연구원 한 사람에게 연구수당 총액의 70%를 초과하여 지급할 수 없습니다.</li></ul></div>
+        연구수당 집행 시 <strong>직접비의 80% 이상이 집행</strong>되어야 연구수당을 전액 지급할 수 있습니다.<br>이에따라 연구원 방침은 직접비의 80% 이상 집행완료된 시점부터 연구수당 지급을 승인합니다.</div><div class="callout callout-warn"><div class="callout-label">⚠️ 주의 : 연구수당 집행 기준 (국가연구개발혁신법)</div><ul><li>수정인건비의 20%를 초과하여 집행할 수 없습니다.</li><li>특정 참여연구원 한 사람에게 연구수당 총액의 70%를 초과하여 지급할 수 없습니다.</li></ul></div>
 
       <hr>
       <h2 id="간접비">간접비</h2>
@@ -1651,20 +1650,20 @@ body.admin-active #content .admin-last-click::after {
       <h3 id="faq-x-첨부파일">Q. ERP에 첨부파일은 어디에 올리나요?</h3>
       <p>ERP 과제등록신청 창 하단 가운데의 <strong>과제관련 첨부파일</strong>에 등록합니다. 자체변경은 변경신청서만 올려도 되고, 전담기관 승인 변경은 승인요청 또는 승인 공문을 함께 올려야 합니다.</p>
 
-      <h3 id="faq-x-erp코드">Q. 기여분으로 들어가는 내부인건비와 간접경비의 ERP 코드 번호는 무엇인가요?</h3>
-      <table>
+      <h3 id="faq-x-erp코드" class="">Q. 기여분으로 들어가는 인건비와 간접경비의 ERP 코드 번호는 무엇인가요?</h3>
+      <table class="">
         <thead><tr><th>코드</th><th>과목명</th></tr></thead>
         <tbody>
-          <tr><td>1101</td><td>내부인건비</td></tr>
-          <tr><td>110101</td><td>내부인건비</td></tr>
-          <tr><td>110102</td><td>내부인건비(위촉)</td></tr>
-          <tr><td>110103</td><td>내부인건비(위촉포함)</td></tr>
+          
+          <tr><td>110101</td><td>내부인건비</td></tr><tr><td>110301</td><td>연구수당(식약처용역)&nbsp;</td></tr>
+          
+          
           <tr><td>130101</td><td>간접경비</td></tr>
         </tbody>
       </table>
       <div class="callout callout-warn">
         <div class="callout-label">⚠️</div>
-        위 5개 코드는 지출 제외처리되어 기여분에 금액 작성 시 연구원 기여분으로 인정됩니다. 다른 코드로 등록할 경우 인건비·간접비 이중 지출이 발생할 수 있으니 주의하세요.
+        위 2개 코드는 지출 제외처리되어 기여분에 금액 작성 시 연구원 기여분으로 인정됩니다. 다른 코드로 등록할 경우 인건비·간접비 이중 지출이 발생할 수 있으니 주의하세요.
       </div>
 
       <h3 id="faq-x-기여분25">Q. 과제 기여분이 25%가 넘지 않습니다.</h3>
@@ -2713,7 +2712,7 @@ body.admin-active #content .admin-last-click::after {
 <script>
 var BUILD_VER = '260623';
 (function () {
-  var BUILD_ID = '260623 085706';
+  var BUILD_ID = '260623 170410';
   try {
     var lastSeen = localStorage.getItem('ktr-build-id');
     if (lastSeen !== BUILD_ID) {
