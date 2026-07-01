@@ -2549,6 +2549,42 @@ body.admin-active #content .admin-last-click::after {
   부가세 미환원 확인서 발급 및 관련 증빙서류 준비에 관한 사항은 <strong>R&amp;D기획실</strong>로 문의하시기 바랍니다.
 </div>
 </div>
+<div id="sp-info" data-init="info" data-title="알아두면 좋은 정보 | KTR ERP 가이드">
+<h1>📌 알아두면 좋은 정보</h1>
+
+<h2>👥 연구원 인원 현황</h2>
+
+<div class="callout">
+  <div class="callout-label">📅 기준일: 2026년 6월 30일</div>
+  직고용(정규·계약직) 기준 인원 현황입니다.
+</div>
+
+<h3>총원</h3>
+<table>
+  <thead>
+    <tr><th>구분</th><th style="text-align:right">인원</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>총원</strong> (정규 + 계약)</td><td style="text-align:right"><strong>1,093명</strong></td></tr>
+    <tr><td>&nbsp;&nbsp;정규</td><td style="text-align:right">994명</td></tr>
+    <tr><td>&nbsp;&nbsp;계약</td><td style="text-align:right">99명</td></tr>
+  </tbody>
+</table>
+
+<h3>학력 구분</h3>
+<table>
+  <thead>
+    <tr><th>학력</th><th style="text-align:right">인원</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>박사</td><td style="text-align:right">103명</td></tr>
+    <tr><td>석사</td><td style="text-align:right">507명</td></tr>
+    <tr><td>학사</td><td style="text-align:right">403명</td></tr>
+    <tr><td>전문대졸 이하</td><td style="text-align:right">80명</td></tr>
+    <tr><td><strong>합계</strong></td><td style="text-align:right"><strong>1,093명</strong></td></tr>
+  </tbody>
+</table>
+</div>
 <div id="sp-관리자가이드" data-init="step-09" data-title="관리자 가이드 | KTR ERP 가이드">
 <h1>🛠️ 관리자 가이드</h1>
       <p style="color:var(--text-2)">대상: R&D기획실 담당자 (콘텐츠 추가·수정 담당)<br>
@@ -2709,9 +2745,9 @@ body.admin-active #content .admin-last-click::after {
       관리자가 디스크에 저장하지 않은 미저장 편집도 함께 사라지므로,
       편집 워크플로우는 반드시 [💾 저장] → py build-bundle.py 순서로. -->
 <script>
-var BUILD_VER = '260701';
+var BUILD_VER = '260702';
 (function () {
-  var BUILD_ID = '260701 174644';
+  var BUILD_ID = '260702 085227';
   try {
     var lastSeen = localStorage.getItem('ktr-build-id');
     if (lastSeen !== BUILD_ID) {
@@ -2764,6 +2800,8 @@ const NAV = [
   { type: 'link', label: '👤 위촉연구원 채용 가이드', href: 'wichok.html', id: 'wichok' },
   { type: 'link', label: '🗺️ 한 눈에 보는 용역과제 등록 절차', href: 'yongyeok.html', id: 'yongyeok' },
   { type: 'link', label: '💡 면세 vs 과세 과제 개념 안내', href: 'vat.html', id: 'vat' },
+  { type: 'sep',  label: '알아두면 좋은 정보' },
+  { type: 'link', label: '👥 연구원 인원 현황', href: 'info.html', id: 'info' },
 ];
 
 /* ── 검색 인덱스 ─────────────────────────────────────────
@@ -3295,6 +3333,13 @@ const SEARCH_INDEX = [
     id: 'wichok', href: 'wichok.html', title: '위촉연구원 채용 가이드',
     tags: ['위촉연구원','채용','채용기준','과제금액','기여분','급여','박사급','석사급','학사급','계약기간','내부결재','협조전','채용공고','계약해지','4대보험','사전협의','인사실','R&D기획실','사유서','월급여','비밀유지서약서','연장계약','본부장','단장'],
     excerpt: '위촉연구원 채용 기준(과제금액 1.5억 이상·기여분 30% 이상), 급여 상한(박사 별도협의·석사 320만·학사 260만), 채용 절차(내부결재→채용공고→협조전+비밀유지서약서), 연장계약 시 절차 반복, 계약관리(합산 2년 이내) 안내.'
+  },
+
+  /* ══ 알아두면 좋은 정보 ══════════════════════════════ */
+  {
+    id: 'info', href: 'info.html', title: '연구원 인원 현황',
+    tags: ['인원','인원현황','총원','정규','계약','박사','석사','학사','전문대졸','직고용','1093명'],
+    excerpt: '2026년 6월 30일 기준. 총원 1,093명(정규 994·계약 99). 학력: 박사 103·석사 507·학사 403·전문대졸 이하 80명.'
   },
 
   /* ══ 면세 vs 과세 과제 개념 안내 ═══════════════════════ */
