@@ -759,6 +759,31 @@ body.admin-active #content .admin-last-click::after {
   #admin-format-bar, #admin-insert-panel, #admin-block-del { display: none !important; }
 }
 
+/* ── 홈 상단 조회수 (app.js renderVisitStats) ── */
+#visit-stats {
+  display: flex; justify-content: center; flex-wrap: wrap; gap: 10px;
+  margin: 0 0 4px;
+}
+#visit-stats .vs-item {
+  display: flex; flex-direction: column; align-items: center;
+  min-width: 88px; padding: 6px 14px;
+  background: var(--bg-soft); border: 1px solid var(--border); border-radius: 10px;
+  user-select: none;
+}
+#visit-stats .vs-label {
+  font-size: 0.68em; font-weight: 700; letter-spacing: 0.08em;
+  color: var(--text-2); text-transform: uppercase;
+}
+#visit-stats .vs-num {
+  font-size: 1.05em; font-weight: 800; color: var(--navy);
+  font-variant-numeric: tabular-nums;
+}
+#visit-stats .vs-today .vs-num { color: #dd0806; }
+@media (max-width: 600px) {
+  #visit-stats { gap: 6px; }
+  #visit-stats .vs-item { min-width: 70px; padding: 5px 8px; }
+}
+
   </style>
 </head>
 <body>
@@ -3120,9 +3145,9 @@ body.admin-active #content .admin-last-click::after {
       관리자가 디스크에 저장하지 않은 미저장 편집도 함께 사라지므로,
       편집 워크플로우는 반드시 [💾 저장] → py build-bundle.py 순서로. -->
 <script>
-var BUILD_VER = '260904';
+var BUILD_VER = '260928';
 (function () {
-  var BUILD_ID = '260904 164133';
+  var BUILD_ID = '260928 112349';
   try {
     var lastSeen = localStorage.getItem('ktr-build-id');
     if (lastSeen !== BUILD_ID) {
@@ -3154,6 +3179,8 @@ const CFG = {
   googleFormUrl:  'https://docs.google.com/forms/d/e/1FAIpQLSdAITW0FtpoEr4gz51uvQOI0Q6GbR4xOb6vXViZVtWir-WhhA/viewform',
   erpUrl:         'https://erp.ktr.or.kr/',
   adminPassword:  'ktr1234',
+  /* 홈 조회수 — Apps Script 웹앱 URL(_ga-stats/). 비어 있으면 표시 안 함 */
+  statsUrl:       '',
 };
 
 /* ── 네비게이션 구조 ────────────────────────────────────── */
@@ -3746,6 +3773,71 @@ function renderSidebar(currentId) {
 /* ══════════════════════════════════════════════════
    피드백 버튼
 ══════════════════════════════════════════════════ */
+/* ══════════════════════════════════════════════════
+   홈 상단 조회수 (Total · Month · Week · Today)
+   #content 안에 런타임으로만 삽입 — 관리자 저장 시 stripRuntimeWidgets()로 제거됨
+══════════════════════════════════════════════════ */
+const VISIT_STATS_KEY = 'ktr-visit-stats';
+const VISIT_STATS_TTL = 10 * 60 * 1000;
+let _visitPage = null;
+let _visitReq = null;
+
+function stripRuntimeWidgets(html) {
+  if (!html || html.indexOf('visit-stats') < 0) return html;
+  const tmp = document.createElement('div');
+  tmp.innerHTML = html;
+  tmp.querySelectorAll('#visit-stats').forEach(el => el.remove());
+  return tmp.innerHTML;
+}
+
+function _readVisitCache() {
+  try { return JSON.parse(localStorage.getItem(VISIT_STATS_KEY) || 'null'); }
+  catch (e) { return null; }
+}
+
+function _fetchVisitStats() {
+  if (_visitReq) return _visitReq;
+  const ctrl = new AbortController();
+  const timer = setTimeout(() => ctrl.abort(), 8000);
+  _visitReq = fetch(CFG.statsUrl, { signal: ctrl.signal })
+    .then(r => r.json())
+    .then(d => {
+      if (!d || !d.ok) throw new Error((d && d.error) || 'stats error');
+      try { localStorage.setItem(VISIT_STATS_KEY, JSON.stringify({ t: Date.now(), d })); } catch (e) {}
+      return d;
+    })
+    .finally(() => { clearTimeout(timer); _visitReq = null; });
+  return _visitReq;
+}
+
+function _drawVisitStats(d) {
+  if (_visitPage !== 'home' || !d) return;
+  const c = document.getElementById('content');
+  if (!c) return;
+  c.querySelectorAll('#visit-stats').forEach(el => el.remove());
+  const fmt = v => (Number(v) || 0).toLocaleString('ko-KR');
+  const items = [['Total', d.total], ['Month', d.month], ['Week', d.week], ['Today', d.today]];
+  const el = document.createElement('div');
+  el.id = 'visit-stats';
+  el.setAttribute('contenteditable', 'false');
+  el.setAttribute('aria-label', '조회수');
+  el.title = `조회수 (Google Analytics 기준 · ${d.updated || ''} 갱신)`;
+  el.innerHTML = items.map(([k, v]) =>
+    `<div class="vs-item vs-${k.toLowerCase()}"><span class="vs-label">${k}</span><span class="vs-num">${fmt(v)}</span></div>`
+  ).join('');
+  c.insertBefore(el, c.firstChild);
+}
+
+function renderVisitStats(pageId) {
+  _visitPage = pageId;
+  if (pageId !== 'home' || !CFG.statsUrl) return;
+  const cached = _readVisitCache();
+  if (cached && cached.d) _drawVisitStats(cached.d);
+  if (!cached || Date.now() - cached.t > VISIT_STATS_TTL) {
+    _fetchVisitStats().then(_drawVisitStats).catch(e => console.warn('[조회수] 불러오기 실패', e));
+  }
+}
+
 function renderFeedback(pageId) {
   const el = document.getElementById('feedback-btn');
   if (!el) return;
@@ -4134,6 +4226,8 @@ window.AdminMode = (() => {
     tmp.querySelectorAll('[contenteditable]').forEach(el => el.removeAttribute('contenteditable'));
     /* 마지막 클릭 표시 클래스 제거 */
     tmp.querySelectorAll('.admin-last-click').forEach(el => el.classList.remove('admin-last-click'));
+    /* 홈 조회수 위젯(런타임 삽입) 제거 */
+    tmp.querySelectorAll('#visit-stats').forEach(el => el.remove());
     return tmp.innerHTML;
   }
 
@@ -4897,7 +4991,7 @@ window.AdminMode = (() => {
     }
 
     try {
-      const html = c.innerHTML;
+      const html = stripRuntimeWidgets(c.innerHTML);
 
       /* 1. 소스 폴더 연결돼 있으면 소스 파일 먼저 갱신 (디스크 = 영구 저장) */
       let sourceResult = null;
@@ -5189,6 +5283,7 @@ window.KTRGuide = {
       buildPageTOC(currentId);
       initLightbox();
       initImageSlots();
+      renderVisitStats(currentId);
       AdminMode.reenterIfActive();
     };
 
@@ -5237,6 +5332,7 @@ renderLightbox();
     AdminMode.initContent(initId);
     initLightbox();
     initImageSlots();
+    if (typeof renderVisitStats === 'function') renderVisitStats(initId);
     if (sessionStorage.getItem('ktr-admin') === '1') {
       AdminMode.reenterIfActive();
     }
