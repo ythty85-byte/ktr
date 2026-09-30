@@ -3135,9 +3135,9 @@ body.admin-active #content .admin-last-click::after {
       관리자가 디스크에 저장하지 않은 미저장 편집도 함께 사라지므로,
       편집 워크플로우는 반드시 [💾 저장] → py build-bundle.py 순서로. -->
 <script>
-var BUILD_VER = '260930';
+var BUILD_VER = '261001';
 (function () {
-  var BUILD_ID = '260930 094931';
+  var BUILD_ID = '261001 084232';
   try {
     var lastSeen = localStorage.getItem('ktr-build-id');
     if (lastSeen !== BUILD_ID) {
@@ -3764,9 +3764,9 @@ function renderSidebar(currentId) {
    피드백 버튼
 ══════════════════════════════════════════════════ */
 /* ══════════════════════════════════════════════════
-   헤더 조회수 (Total · Month · Today) — CFG.statsUrl(Apps Script 웹앱)의 views(GA screenPageViews)
+   헤더 조회수 (Total · Month · Week) — CFG.statsUrl(Apps Script 웹앱)의 views(GA screenPageViews)
 ══════════════════════════════════════════════════ */
-const VISIT_STATS_KEY = 'ktr-visit-stats-v2';
+const VISIT_STATS_KEY = 'ktr-visit-stats-v4';
 const VISIT_STATS_TTL = 10 * 60 * 1000;
 
 function _readVisitCache() {
@@ -3797,8 +3797,8 @@ function _drawVisitStats(d) {
     right.insertBefore(el, right.firstChild);
   }
   const u = d.views;
-  const rows = [['Total', u.total], ['Month', u.month], ['Today', u.today]];
-  el.title = `조회수 (Google Analytics 기준 · ${d.updated || ''} 갱신)`;
+  const rows = [['Total', u.total], ['Month', u.month], ['Week', u.week]];
+  el.title = `조회수 (Google Analytics 기준 · Month: 30일 전~어제 · Week: 7일 전~어제 · ${d.updated || ''} 갱신)`;
   el.innerHTML = '<span class="hs-title">조회수</span><dl class="hs-rows">' +
     rows.map(([k, v]) => `<dt>${k}</dt><dd>${Number(v) || 0}</dd>`).join('') + '</dl>';
 }
