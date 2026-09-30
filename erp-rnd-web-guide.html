@@ -759,7 +759,7 @@ body.admin-active #content .admin-last-click::after {
   #admin-format-bar, #admin-insert-panel, #admin-block-del { display: none !important; }
 }
 
-/* ── 헤더 방문자수 (app.js renderVisitStats) ── */
+/* ── 헤더 조회수 (app.js renderVisitStats) ── */
 #hdr-stats {
   display: flex; align-items: flex-start; gap: 5px;
   margin-right: 22px;
@@ -3135,9 +3135,9 @@ body.admin-active #content .admin-last-click::after {
       관리자가 디스크에 저장하지 않은 미저장 편집도 함께 사라지므로,
       편집 워크플로우는 반드시 [💾 저장] → py build-bundle.py 순서로. -->
 <script>
-var BUILD_VER = '260928';
+var BUILD_VER = '260930';
 (function () {
-  var BUILD_ID = '260928 133252';
+  var BUILD_ID = '260930 093011';
   try {
     var lastSeen = localStorage.getItem('ktr-build-id');
     if (lastSeen !== BUILD_ID) {
@@ -3169,7 +3169,7 @@ const CFG = {
   googleFormUrl:  'https://docs.google.com/forms/d/e/1FAIpQLSdAITW0FtpoEr4gz51uvQOI0Q6GbR4xOb6vXViZVtWir-WhhA/viewform',
   erpUrl:         'https://erp.ktr.or.kr/',
   adminPassword:  'ktr1234',
-  /* 헤더 방문자수 — Apps Script 웹앱 URL(_ga-stats/). 비어 있으면 표시 안 함 */
+  /* 헤더 조회수 — Apps Script 웹앱 URL(_ga-stats/). 비어 있으면 표시 안 함 */
   statsUrl:       'https://script.google.com/macros/s/AKfycbxy5XSt1QMFOEHoTR7b_G2NMdKWPWrIS97M2RXGxQ-kXG3lB7Kv7hBBxV4XF89TJAUb/exec',
 };
 
@@ -3764,7 +3764,7 @@ function renderSidebar(currentId) {
    피드백 버튼
 ══════════════════════════════════════════════════ */
 /* ══════════════════════════════════════════════════
-   헤더 방문자수 (Total · Month · Today) — CFG.statsUrl(Apps Script 웹앱)의 users(GA activeUsers)
+   헤더 조회수 (Total · Month · Today) — CFG.statsUrl(Apps Script 웹앱)의 views(GA screenPageViews)
 ══════════════════════════════════════════════════ */
 const VISIT_STATS_KEY = 'ktr-visit-stats-v2';
 const VISIT_STATS_TTL = 10 * 60 * 1000;
@@ -3780,7 +3780,7 @@ function _fetchVisitStats() {
   return fetch(CFG.statsUrl, { signal: ctrl.signal })
     .then(r => r.json())
     .then(d => {
-      if (!d || !d.ok || !d.users) throw new Error((d && d.error) || 'stats error');
+      if (!d || !d.ok || !d.views) throw new Error((d && d.error) || 'stats error');
       try { localStorage.setItem(VISIT_STATS_KEY, JSON.stringify({ t: Date.now(), d })); } catch (e) {}
       return d;
     })
@@ -3789,17 +3789,17 @@ function _fetchVisitStats() {
 
 function _drawVisitStats(d) {
   const right = document.querySelector('#site-header .header-right');
-  if (!right || !d || !d.users) return;
+  if (!right || !d || !d.views) return;
   let el = document.getElementById('hdr-stats');
   if (!el) {
     el = document.createElement('div');
     el.id = 'hdr-stats';
     right.insertBefore(el, right.firstChild);
   }
-  const u = d.users;
+  const u = d.views;
   const rows = [['Total', u.total], ['Month', u.month], ['Today', u.today]];
-  el.title = `방문자수 (Google Analytics 사용자 기준 · ${d.updated || ''} 갱신)`;
-  el.innerHTML = '<span class="hs-title">방문자수</span><dl class="hs-rows">' +
+  el.title = `조회수 (Google Analytics 기준 · ${d.updated || ''} 갱신)`;
+  el.innerHTML = '<span class="hs-title">조회수</span><dl class="hs-rows">' +
     rows.map(([k, v]) => `<dt>${k}</dt><dd>${Number(v) || 0}</dd>`).join('') + '</dl>';
 }
 
