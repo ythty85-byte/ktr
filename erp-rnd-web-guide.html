@@ -1505,7 +1505,7 @@ body.admin-active #content .admin-last-click::after {
 
       <h3 class="">4. 가계정으로 집행</h3>
       <p class="">정식 계정과 동일한 방법으로 지출요구합니다. → <a href="step-04.html">4단계 사업비 집행 참고</a><br><br></p><h2 class="" style="color: rgb(0, 48, 135);">가계정&nbsp;<span style="color: rgb(26, 26, 46); font-size: 1.05em;">→&nbsp;</span><font size="4">본계정 전환 방법</font></h2>
-      <p class=""><b>협약이 완료되면 본계정 전환</b>을 반드시 해야합니다.<br><b>1. </b>ERP&gt;개인업무&gt;과제정보조회&gt;과제명 검색 후 선택<br><b>2.</b> '<b>변경신청</b>' 클릭 ('신규신청 아님)<br><b>3.</b> 변경구분에 '<b>기타</b>' 선택, 비고란에 "<b>본계정 전환</b>" 입력 + 추가 변경사항 있으면 내용 수정 후 비고란에 내용 추가 작성<br><b>4.</b> 과제관련 첨부파일(첨부해야할 파일 5종)<br>&nbsp; &nbsp; 1) 계약협약 승인요청 내부결재<br>&nbsp; &nbsp; 2) 협약서/계약서<br>&nbsp; &nbsp; 3) 최종연구개발계획서<br>&nbsp; &nbsp; 4) 의뢰시험신청서<br>&nbsp; &nbsp; 5) 사업비/참여자 변동이 있다면 변경신청서<br><b>5.</b> '<b>검토요청</b>' 클릭 &gt; 검토완료 후 '<b>결재상신</b>' 클릭</p>
+      <p class=""><b>협약이 완료되면 본계정 전환</b>을 반드시 해야합니다. 사전검토를 안하셨다면 <a href="step-01.html">1단계 사전검토</a>부터 진행합니다.(사전검토 했는지 안했는지 기억이 안난다면 높은 확률로 안하셨을겁니다.)<br><br><b>1.</b> <a href="step-01.html">1단계 사전검토</a> 진행 &gt; <a href="step-02.html">2단계 내부결재</a> 진행<br><b><br>2.</b> ERP 계정등록은 아래와 같이 진행합니다.<br><b>&nbsp; &nbsp;(1)&nbsp;</b>ERP&gt;개인업무&gt;과제정보조회&gt;과제명 검색 후 선택<br><b>&nbsp; &nbsp;(2)</b>&nbsp;'<b>변경신청</b>' 클릭 ('신규신청 아님)<br><b>&nbsp; &nbsp;(3)</b>&nbsp;변경구분에 '<b>기타</b>' 선택, 비고란에 "<b>본계정 전환</b>" 입력 + 추가 변경사항 있으면 내용 수정 후 비고란에 내용 추가 작성<br><b>&nbsp; &nbsp;(4)</b>&nbsp;과제관련 첨부파일(첨부해야할 파일 5종)<br>&nbsp; &nbsp; &nbsp; &nbsp;1) 계약협약 승인요청 내부결재<br>&nbsp; &nbsp; &nbsp; &nbsp;2) 협약서/계약서<br>&nbsp; &nbsp; &nbsp; &nbsp;3) 최종연구개발계획서<br>&nbsp; &nbsp; &nbsp; &nbsp;4) 의뢰시험신청서<br>&nbsp; &nbsp; &nbsp; &nbsp;5) 사업비/참여자 변동이 있다면 변경신청서<br><b><br>3.</b> '<b>검토요청</b>' 클릭 &gt; 검토완료 후 '<b>결재상신</b>' 클릭</p>
 
       <h2 class="">⚠️ 주의사항</h2>
       <div class="callout callout-danger">
@@ -2946,7 +2946,7 @@ body.admin-active #content .admin-last-click::after {
 <script>
 var BUILD_VER = '261026';
 (function () {
-  var BUILD_ID = '261026 140010';
+  var BUILD_ID = '261026 142750';
   try {
     var lastSeen = localStorage.getItem('ktr-build-id');
     if (lastSeen !== BUILD_ID) {
@@ -3050,8 +3050,8 @@ const SEARCH_INDEX = [
   },
   {
     id: 'step-07', href: 'step-07.html', title: '가계정 등록',
-    tags: ['가계정','임시계정','협약전','협조문','비고란','본계정','전환','변경신청','검토요청','인건비정보','과제예산정보','R&D기획실장'],
-    excerpt: '협약 완료 전 사업비를 먼저 집행해야 할 때 쓰는 예외적 절차. R&D기획실 사전 협의 → 그룹웨어 협조문(수신 R&D기획실장) → 3단계 계정등록과 같은 방법으로 입력(비고란 "가계정 등록", 인건비 정보·과제예산정보 필수). 협약 완료 후 과제정보조회 > 변경신청으로 본계정 전환(비고란 "본계정 전환").'
+    tags: ['가계정','임시계정','협약전','협조문','비고란','본계정','전환','사전검토','내부결재','변경신청','검토요청','인건비정보','과제예산정보','R&D기획실장'],
+    excerpt: '협약 완료 전 사업비를 먼저 집행해야 할 때 쓰는 예외적 절차. R&D기획실 사전 협의 → 그룹웨어 협조문(수신 R&D기획실장) → 3단계 계정등록과 같은 방법으로 입력(비고란 "가계정 등록", 인건비 정보·과제예산정보 필수). 협약 완료 후 1단계 사전검토·2단계 내부결재를 거쳐 과제정보조회 > 변경신청으로 본계정 전환(비고란 "본계정 전환").'
   },
   {
     id: 'step-08', href: 'step-08.html', title: '지출요구 취소 (인건비 마이너스 처리)',
